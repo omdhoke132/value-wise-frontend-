@@ -1,4 +1,4 @@
-const API_BASE = window.VALUEWISE_API_URL || 'https://valuewise-api.onrender.com';
+const API_BASE = window.VALUEWISE_API_URL || 'https://value-wise-backend.onrender.com';
 
 const form = document.getElementById('recommenderForm');
 const results = document.getElementById('results');
