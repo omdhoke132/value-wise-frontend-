@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ValueWise — Find the phone worth your money</title>
+  <meta name="description" content="ValueWise helps you find the smartphone that gives you the best value for your budget and priorities." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark">V</span><span>ValueWise</span></div>
+    <div class="topbar-note">Smart picks. Better value.</div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <p class="eyebrow">PHONE DECISIONS, WITHOUT THE NOISE</p>
+        <h1>Find the phone that’s <span>actually worth it.</span></h1>
+        <p class="hero-copy">Tell us your budget and what matters most. ValueWise ranks the phones that fit your needs and explains why.</p>
+      </div>
+      <div class="hero-badge">
+        <strong>Value score</strong>
+        <span>Based on your priorities</span>
+      </div>
+    </section>
+
+    <section class="app-shell">
+      <form id="recommenderForm" class="panel controls-panel">
+        <div class="panel-heading">
+          <div>
+            <p class="section-kicker">01 — YOUR NEEDS</p>
+            <h2>Build your shortlist</h2>
+          </div>
+          <button type="button" id="resetBtn" class="text-btn">Reset</button>
+        </div>
+
+        <div class="field-grid two">
+          <label class="field">
+            <span>Budget (₹)</span>
+            <input id="budget" type="number" min="1" step="500" value="30000" required />
+          </label>
+          <label class="field">
+            <span>Minimum RAM</span>
+            <select id="minRam">
+              <option value="">Any</option>
+              <option value="4">4 GB</option>
+              <option value="6">6 GB</option>
+              <option value="8" selected>8 GB</option>
+              <option value="12">12 GB</option>
+              <option value="16">16 GB</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>Minimum storage</span>
+            <select id="minStorage">
+              <option value="">Any</option>
+              <option value="128" selected>128 GB</option>
+              <option value="256">256 GB</option>
+              <option value="512">512 GB</option>
+              <option value="1024">1 TB</option>
+            </select>
+          </label>
+          <div class="field check-field">
+            <span>Must-have</span>
+            <label class="toggle-row"><input id="require5g" type="checkbox" checked><span>5G</span></label>
+            <label class="toggle-row"><input id="requireNfc" type="checkbox"><span>NFC</span></label>
+          </div>
+        </div>
+
+        <div class="preference-block">
+          <div class="preference-head">
+            <div>
+              <p class="section-kicker">02 — PRIORITIES</p>
+              <h3>What matters most?</h3>
+            </div>
+            <span id="weightStatus" class="weight-status">Balanced</span>
+          </div>
+          <p class="helper">Adjust the sliders. ValueWise uses these weights to rank matching phones.</p>
+
+          <div class="sliders">
+            <label class="slider-row"><span>Gaming</span><input data-key="gaming" type="range" min="0" max="100" value="20"><output>20</output></label>
+            <label class="slider-row"><span>Camera</span><input data-key="camera" type="range" min="0" max="100" value="20"><output>20</output></label>
+            <label class="slider-row"><span>Battery</span><input data-key="battery" type="range" min="0" max="100" value="20"><output>20</output></label>
+            <label class="slider-row"><span>Performance</span><input data-key="performance" type="range" min="0" max="100" value="20"><output>20</output></label>
+            <label class="slider-row"><span>Display</span><input data-key="display" type="range" min="0" max="100" value="10"><output>10</output></label>
+            <label class="slider-row"><span>Value</span><input data-key="value" type="range" min="0" max="100" value="10"><output>10</output></label>
+          </div>
+        </div>
+
+        <button class="primary-btn" type="submit"><span>Find my best phones</span><span>→</span></button>
+        <p id="formError" class="form-error" role="alert"></p>
+      </form>
+
+      <section class="panel results-panel" aria-live="polite">
+        <div class="panel-heading results-heading">
+          <div>
+            <p class="section-kicker">03 — RESULTS</p>
+            <h2 id="resultsTitle">Your recommendations</h2>
+          </div>
+          <span id="resultCount" class="count-pill">—</span>
+        </div>
+
+        <div id="state" class="state empty-state">
+          <div class="state-icon">✦</div>
+          <h3>Let’s find your match.</h3>
+          <p>Set your budget and priorities, then hit the button.</p>
+        </div>
+
+        <div id="results" class="results-list hidden"></div>
+      </section>
+    </section>
+  </main>
+
+  <footer>ValueWise prototype · Recommendations are deterministic scores based on the available phone data.</footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
